@@ -6,15 +6,18 @@ import "./index.css"
 import Login from "./components/Login";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import Feed from "./components/Feed";
+import Profile from "./components/Profile";
 function App()
 {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Body/>}>
+            <Route path="/" element={<Feed/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/test" element={<div>test page</div>}/>
+            <Route path="/profile" element={<Profile/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

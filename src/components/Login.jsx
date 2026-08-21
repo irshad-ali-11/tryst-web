@@ -11,10 +11,12 @@ const Login = () => {
     const navigate = useNavigate();
     const [emailId ,setEmailId] = useState("duaa@gmail.com");
     const [password,setPassword] = useState("Duaa@123");
+    const [error,setError] = useState("");
 
     const handleLogin = async ()=>
     {
        try {
+        setError("");
          const res = await axios.post(BASE_URL +"/login",
              {
                  emailId,
@@ -24,10 +26,13 @@ const Login = () => {
                 withCredentials:true
              }
             );
-            console.log(res.data);
+            //console.log(res.data);
             dispatch(addUser(res?.data?.user));
+            navigate("/");
        } catch (error) {
-        console.log("ERROR " + error.message)
+        
+        setError(error?.response?.data?.message)
+        console.log(error?.response)
        }
 
     }
@@ -53,8 +58,9 @@ const Login = () => {
                     value={password}
                     onChange={(e)=>setPassword(e?.target?.value)}
                 />
+               { error && <p className='font-bold text-red-500'>{error}</p>}
             <button 
-                className="btn btn-neutral mt-2 py-2 "
+                className="btn btn-primary mt-2 py-2 "
                 onClick={handleLogin}
             >
                 Login
