@@ -4,6 +4,7 @@ import { BASE_URL } from '../utils/constants';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../redux/slices/userSlice';
+import SuccessAlert from './SuccessAlert';
 const EditProfile = ({user}) => {
 
     const [firstName,setFirstName] = useState(user?.firstName);
@@ -107,6 +108,9 @@ const EditProfile = ({user}) => {
                             value={about}
                             onChange={(e)=>setAbout(e.target.value)}  
                         />
+                        {
+                            isToast&&<SuccessAlert/>
+                        }
                        
                     {error && <span className='text-red-500'>{error}</span>}
                     <button 

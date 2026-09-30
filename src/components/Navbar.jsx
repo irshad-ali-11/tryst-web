@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-200 shadow-sm">
   <div className="flex-1">
-    <Link to="/" className="btn btn-ghost text-xl">🧑‍💻devTinder</Link>
+    <Link to="/" className="btn btn-ghost text-xl">🧑‍💻 Tryst</Link>
   </div>
   
   {user && <div className="flex gap-2">
@@ -51,7 +51,16 @@ const Navbar = () => {
             <span className="badge">New</span>
           </Link>
         </li>
-        <li><a>Settings</a></li>
+        <li>
+          <Link to="/connections">
+              Connection
+          </Link>
+          </li>
+        <li>
+          <Link to="/requests">
+              Request
+          </Link>
+          </li>
         <li><a onClick={handleLogOut}>Logout</a></li>
       </ul>
     </div>
